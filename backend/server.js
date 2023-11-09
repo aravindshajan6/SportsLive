@@ -5,16 +5,16 @@ const dbConnection = require('./config/dbConnection');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const app = express();
+app.use(cors());
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Allow all origins for development, but be more restrictive in production.
+    res.header('Access-Control-Allow-Origin', 'https://sports-live-api.netlify.app/'); // Allow all origins for development, but be more restrictive in production.
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
   });
 
 dotenv.config({path: './config/.env'});
-app.use(cors());
 app.use(cookieParser());
 dbConnection(); //db connection
 
