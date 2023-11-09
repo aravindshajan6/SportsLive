@@ -4,6 +4,7 @@ const path = require('path');
 const dbConnection = require('./config/dbConnection');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const app = express();
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'); // Allow all origins for development, but be more restrictive in production.
@@ -12,7 +13,6 @@ app.use((req, res, next) => {
     next();
   });
 
-const app = express();
 dotenv.config({path: './config/.env'});
 app.use(cors());
 app.use(cookieParser());
