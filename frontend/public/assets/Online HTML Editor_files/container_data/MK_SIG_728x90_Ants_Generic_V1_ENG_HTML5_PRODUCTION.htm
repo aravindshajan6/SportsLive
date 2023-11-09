@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>SIG_728x90_Ants_Generic_V1_ENG_HTML5 - merck</title>
+
+  <meta name="ad.size" content="width=728,height=90">
+
+  <link rel="stylesheet" type="text/css" href="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/SIG_728x90_Ants_Generic_V1_ENG_HTML5.css">
+
+  <script src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/Enabler_01_250.js"></script>
+  <script src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/tweenmax_2.0.1_min.js" type="text/javascript"></script>
+  <script src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/timelinemax_2.0.1_min.js" type="text/javascript"></script>
+
+
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+
+<script type="text/javascript">
+    
+  (function() {
+    var MAX_URL_PARAM_LENGTH = 34;
+    var CLICK_X_URL_KEY = 'nx';
+    var CLICK_Y_URL_KEY = 'ny';
+    var CREATIVE_DIMENSIONS_KEY = 'dim';
+    var AD_URL_PARAM = '&adurl=';
+
+    var relegateNavigation = '';
+    var urlParamMap = {};
+
+    urlParamMap[CLICK_X_URL_KEY] = null;
+    urlParamMap[CLICK_Y_URL_KEY] = null;
+    urlParamMap[CREATIVE_DIMENSIONS_KEY] = null;
+
+    var handleClickTagMessage = function(e) {
+      try {
+        var eventData = JSON.parse(e.data);
+      } catch (err) {
+        return;
+      }
+      if (eventData.isInitClickTag) {
+        if (eventData.clickTags) {
+          for (var i = 0; i < eventData.clickTags.length; i++) {
+            var clkTag = eventData.clickTags[i];
+            window[clkTag.name] = clkTag.url;
+          }
+        } else if (eventData.clickTag) {
+          window.clickTag = eventData.clickTag;
+        }
+        relegateNavigation = eventData.relegateNavigation;
+      }
+    };
+
+    var storeClickCoordinates = function(e) {
+      urlParamMap[CLICK_X_URL_KEY] = Math.round(e.clientX);
+      urlParamMap[CLICK_Y_URL_KEY] = Math.round(e.clientY);
+    };
+
+    var getCreativeDimensions = function() {
+      return window.innerWidth + 'x' + window.innerHeight;
+    }
+
+    var getExitClickParams = function(e) {
+      urlParamMap[CREATIVE_DIMENSIONS_KEY] = getCreativeDimensions();
+
+      var exitParams = '';
+      for (var key in urlParamMap) {
+        exitParams += '&' + key + '=';
+        if (urlParamMap[key] !== null) {
+          exitParams += urlParamMap[key];
+        }
+      }
+      return exitParams;
+    }
+
+    var appendExitClickParams = function(url) {
+      var adUrlIndex = url.toLowerCase().indexOf(AD_URL_PARAM);
+      var paramsToBeAdded = getExitClickParams();
+      if (adUrlIndex > -1 && paramsToBeAdded.length <= MAX_URL_PARAM_LENGTH) {
+        url = url.substr(0, adUrlIndex) + paramsToBeAdded +
+          url.substr(adUrlIndex);
+      };
+      return url;
+    };
+
+    if (open.call) {
+      window.open = function(open) {
+        return function(url, name, features) {
+          url = appendExitClickParams(url);
+          if (relegateNavigation === 'parent') {
+            var message = {'clickTag': url, 'isPostClickTag': true};
+            parent.postMessage(JSON.stringify(message), '*');
+          } else {
+            var args = [url, name];
+            if (features) {
+              args.push(features);
+            }
+            open.apply(window, args);
+          }
+        };
+      }(window.open);
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener(
+          'message', handleClickTagMessage, false);
+      window.addEventListener('mousedown', storeClickCoordinates, true);
+    } else {
+      window.attachEvent('onmessage', handleClickTagMessage);
+    }
+  })();
+    
+  </script><script type="text/javascript" charset="UTF-8" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/prod_studio_01_250_videomodule.js"></script></head>
+<body>
+
+<!-- =============== AD: 728x90 ====================== -->
+
+<div id="mfuse_ad__01" class="mfuse_ad__728x90">
+
+  <div id="mfa__layer_1" style="position: absolute; z-index: 0; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden;">
+    <video id="mfa__video_1" preload="metadata" playsinline="" style="position: absolute; top: 0; left: 0;" width="728" height="90" muted="muted" class="mfuse_video">
+      <source src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/SIG_728x90_Ants_Generic_V1_HTML5__video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="mfa__layer_2" style="position: absolute; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden;">
+    <img id="mfa__brand_logo" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/merck_728x90.svg" width="728" height="90" style="position: absolute; top: 0; right: 0;">
+    <img id="mfa__portfolio_logo" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/sigmaaldrich_728x90.svg" width="728" height="90" style="position: absolute; bottom: 0; right: 0;">
+
+    <img id="mfa__text_01" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/SIG_728x90_Ants_Generic_V1_ENG_HTML5__text_01.svg" class="mfa__text" width="728" height="90" style="opacity: 0; position: absolute; bottom: 0px; left: 0px;">
+    <img id="mfa__text_02" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/SIG_728x90_Ants_Generic_V1_ENG_HTML5__text_02.svg" class="mfa__text" width="728" height="90" style="opacity: 0; position: absolute; bottom: 0px; left: 0px;">
+<!--    <img id="mfa__text_03" src="SIG_728x90_Ants_Generic_V1_ENG_HTML5__text_03.svg" class="mfa__text" width="728" height="90" style="opacity: 0; position: absolute; bottom: -30px; left: 0;"/>-->
+
+    <img id="mfa__button_cta" src="MK_SIG_728x90_Ants_Generic_V1_ENG_HTML5_PRODUCTION_data/SIG_728x90_Ants_Generic_V1_ENG_HTML5__cta.svg" class="mfa__cta" width="728" height="90" style="opacity: 1; position: absolute; bottom: 0px; left: 0px;">
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript" id="mfuse_ad__01__animation">
+
+    var ad = document.getElementById("mfuse_ad__01");
+    var vid = document.getElementById("mfa__video_1");
+    var tl;
+
+    var is_paused = false;
+
+    ad.addEventListener('click', function (ev) {
+        end_timeline();
+        end_video();
+    });
+
+    function play_video() {
+
+        if (!is_paused) {
+            let playPromise = vid.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(function () {
+                    // Automatic playback started!
+                    // Show playing UI.
+                })
+                    .catch(function (error) {
+                        // Auto-play was prevented
+                        // Show paused UI.
+                    });
+            }
+        }
+    }
+
+    var end_video = function (ev) {
+        // console.log("HELLO");
+        vid.currentTime = vid.duration;
+        vid.pause();
+        is_paused = true;
+    };
+
+    var end_timeline = function () {
+       // tl.seek(tl.duration(), false);
+       tl.totalTime(tl.totalDuration(), false);
+        tl.pause();
+    };
+
+    function init_animation() {
+
+        window.console.log("mfuse.ad.init");
+
+        var replay_video = function () {
+            vid.pause();
+            vid.currentTime = 0;
+
+            if (!is_paused) {
+                var promise = vid.play();
+
+                if (promise !== undefined) {
+                    promise.then(function () {
+                        // Autoplay started!
+                    }).catch(function (error) {
+                        // Autoplay was prevented.
+                        // Show a "Play" button so that user can start playback.
+                    });
+                }
+            }
+        };
+
+        var mfuse_ad_animation = function () {
+            let
+                // $video = document.getElementById("mfa__video_1"),
+                // $content = document.getElementById("mfa__layer_2"),
+                $text1 = document.getElementById("mfa__text_01"),
+                $text2 = document.getElementById("mfa__text_02");
+                // $text3 = document.getElementById("mfa__text_03");
+
+                let $button_cta = document.getElementById("mfa__button_cta");
+
+                // let $brand_logo = document.getElementById("mfa__brand_logo"),
+                // $portfolio_logo = document.getElementById("mfa__portfolio_logo");
+
+            let $t1_y = 0,
+                $t1_y_start = $t1_y - 30,
+                $t1_y_exit = $t1_y + 30;
+
+            let $t2_y = 0,
+                $t2_y_start = $t2_y - 30,
+                $t2_y_exit = $t2_y + 30;
+
+            let $t3_y = 0,
+                $t3_y_start = $t3_y - 30,
+                $t3_y_exit = $t3_y + 30;
+
+            tl = new TimelineMax();
+
+            tl.pause();
+
+            // KEY_A
+            tl.add('KEY_A', 0);
+            // tl.to($portfolio_logo, 1, {bottom: 0}, 'KEY_A');
+            // tl.to($text1, 1, {opacity: 1, bottom: $t1_y}, 'KEY_A');
+
+            // KEY_C
+            tl.add('KEY_C', "+=3");
+            tl.to($text1, 1, {opacity: 0}, 'KEY_C');
+            tl.to($text2, 1, {opacity: 1}, 'KEY_C+=1');
+
+            // KEY_D
+            tl.add('KEY_D', "+=3");
+            tl.to($text2, 1, {opacity: 0}, 'KEY_D');
+            // tl.fromTo($text3, 1, {opacity: 0, bottom: $t3_y_start}, {opacity: 1, bottom: $t3_y}, 'KEY_D');
+            tl.fromTo($button_cta, 1, {opacity: 0}, {opacity: 1}, 'KEY_D+=1');
+
+            // KEY_E
+            // tl.add('KEY_E');
+            // tl.to($brand_logo, 1, {top: 0}, 'KEY_E');
+
+            // KEY_G
+            // tl.add('KEY_G', "+=3");
+            // tl.fromTo($text3, 1, {opacity: 1, bottom: $t3_y, immediateRender:false}, {opacity: 0, bottom: $t3_y_exit}, 'KEY_G');
+            // tl.fromTo($button_cta, 1, {opacity: 1, bottom: 164, immediateRender:false}, {opacity: 0, bottom: 164 + 34}, 'KEY_G');
+
+            // KEY_H
+            // tl.add('KEY_H', "-=1");
+            // tl.add(replay_video, 'KEY_H');
+            // tl.fromTo($text1, 1, {opacity: 0, bottom: $t1_y_start, immediateRender:false}, {opacity: 1, bottom: $t1_y}, 'KEY_H');
+
+            // KEY_J
+            // tl.add('KEY_J', "+=1.5");
+            // tl.to($text1, 1, {opacity: 0, bottom: $t1_y_exit}, 'KEY_J');
+            // tl.fromTo($text2, 1, {opacity: 0, bottom: $t2_y_start, immediateRender:false}, {opacity: 1, bottom: $t2_y}, 'KEY_J');
+
+            // KEY_K
+            // tl.add('KEY_K', "+=1.5");
+            // tl.to($text2, 1, {opacity: 0, bottom: $t2_y_exit}, 'KEY_K');
+            // tl.fromTo($text3, 1, {opacity: 0, bottom: $t3_y_start, immediateRender:false}, {opacity: 1, bottom: $t3_y}, 'KEY_K');
+            // tl.fromTo($button_cta, 1, {opacity: 0, bottom: 130, immediateRender:false}, {opacity: 1, bottom: 164}, 'KEY_K');
+
+
+            tl.play();
+
+            if (typeof GSDevTools !== 'undefined') {
+                GSDevTools.create({paused: false, id: "mFuse_Ad"});
+            }
+        };
+
+
+        play_video();
+        mfuse_ad_animation();
+
+
+    }
+
+</script>
+
+<!-- ================ End: AD ========================= -->
+
+
+
+
+<script type="text/javascript" id="Enabler_init">
+
+    // If true, start function. If false, listen for INIT.
+     function mfuse_ad_ready () {
+
+        if (Enabler.isInitialized()) {
+            init();
+        } else {
+            Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+        }
+
+        Enabler.loadModule(studio.module.ModuleId.VIDEO, function () {
+            studio.video.Reporter.attach('video_background', vid);
+        });
+
+        // Runs when Enabler is ready.
+        function init() {
+            if (Enabler.isPageLoaded()) {
+                init_animation();
+            } else {
+                Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, init_animation);
+            }
+        }
+
+        function bgExitHandler(e) {
+            window.console.log("Background exit:", e);
+            vid.pause();
+            Enabler.exit('Background Exit');
+        }
+
+        document.getElementById('mfuse_ad__01').addEventListener('click', bgExitHandler, false);
+    }
+
+      document.addEventListener("DOMContentLoaded", mfuse_ad_ready);
+
+</script>
+
+
+<iframe style="display: none;"></iframe></body></html>

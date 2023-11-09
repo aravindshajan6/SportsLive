@@ -1,0 +1,74 @@
+
+.hero-container {
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    object-fit: fill;
+    background-position: center;
+	background-size: cover;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden; 
+    /* Hide any overflowing content */
+    /* left: -153px; */
+}
+
+.video-div  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    object-fit: fill;
+    overflow: hidden;
+    /* background-color: violet; */
+}
+
+.hero-video {
+    width: 100%;
+	height: 100%;
+	z-index: -1;
+    object-fit: cover;
+}
+
+.hero-description {
+    /* background-color: red; */
+    width: 350px;
+    height: 100px;
+    position: relative;
+    /* margin-top: -400px !important; */
+    color: white;
+    /* margin:15% 40%; */
+    margin: 30vh auto;
+    /* z-index: 100; */
+}
+
+.hero-description > h1 {
+    align-items: center;
+    justify-content: center;
+    color: rgb(253, 253, 255);
+    font-size: 70px;
+}
+
+.hero-description > p {
+    align-items: center;
+    justify-content: center;
+    color: rgb(251, 251, 251);
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+@media screen and (max-width: 572px) {
+    .hero-container {
+        /* background-color: red; */
+    }
+}
+
+

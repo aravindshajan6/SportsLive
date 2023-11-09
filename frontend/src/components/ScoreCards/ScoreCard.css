@@ -1,0 +1,125 @@
+.match-card-container {
+    display: flex;
+    flex-direction: column;
+    /* background-color: green; */
+    /* color: white; */
+    margin: 0 auto;
+}
+
+.card-heading {
+    color: rgb(255, 255, 255);
+    margin: 20px auto;
+}
+
+.match-cards {
+    background-color: black;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    width: 70vw;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    align-items: center;
+}
+
+.team {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.team > h2 {
+    text-align: center;
+}
+
+.team-logo {
+    height: 80px !important;
+    width: 100px !important;
+}
+
+.match-cards:hover {
+    background-color: rgb(10, 10, 43);
+    transform: scale(1.1);
+    transition: all ease-in 0.3s;
+}
+
+.match-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.match-score > p {
+    color: violet;
+}
+
+.team > h2 {
+    color: white;
+}
+
+@media screen and (max-width : 800px) {
+
+    .match-cards {
+        background-color: black;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-around;
+        height: 150px;
+        width: 90vw;
+        padding: 30px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .team > h2 {
+        /* color: purple; */
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width : 1200px) {
+    .team > h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width : 540px) {
+    .score-card > img {
+        max-width: 90px;
+        max-height: 70px;
+    }
+
+    .team > h2 {
+        font-size: 18px;
+        max-width: 150px;
+        max-height: 80px;
+        /* white-space: nowrap;  */
+        /* Prevent text from wrapping to the second line */
+        overflow: hidden; /* Hide the overflowing text */
+        text-overflow: ellipsis;
+    }
+
+}
+
+@media screen and (max-width : 398px) {
+    .team-logo {
+        width: 80px !important;
+        height: 60px !important;
+    }
+
+    .team > h2 {
+        font-size: 14px;
+        max-width: 150px;
+        max-height: 80px;
+        /* white-space: nowrap;  */
+        /* Prevent text from wrapping to the second line */
+        overflow: hidden; /* Hide the overflowing text */
+        text-overflow: ellipsis;
+    }
+}

@@ -1,0 +1,21 @@
+Processes:
+
+    Get live scores: This process retrieves live scores from the football match data provider.
+    Get previous scores: This process retrieves previous scores from the database.
+    Get upcoming match schedule: This process retrieves the upcoming match schedule from the database.
+    Post comment: This process allows users to post comments on already completed games.
+
+Data stores:
+
+    Database: The database stores the following data:
+        Live scores
+        Previous scores
+        Upcoming match schedule
+        User comments
+
+Data flows:
+
+    Live scores: Live scores flow from the football match data provider to the database and then to the get live scores process.
+    Previous scores: Previous scores flow from the database to the get previous scores process.
+    Upcoming match schedule: The upcoming match schedule flows from the database to the get upcoming match schedule process.
+    User comments: User comments flow from the post comment process to the database.
