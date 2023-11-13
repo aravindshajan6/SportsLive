@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import { BASE_URL } from '../helper';
 
 const ProfileScreen = () => {
 
@@ -35,7 +36,7 @@ const ProfileScreen = () => {
             console.log("inside token if LOOP");
             if(token) {
                 console.log("token found in cookies");
-                axios.post('http://localhost:4000/user/profile', {token, username})
+                axios.post(`${BASE_URL}/user/profile`, {token, username})
                     .then((data) => {
                         console.log("data from axios req in profile :", data);
                         setUser({...user, ...data.data});
@@ -85,7 +86,7 @@ const ProfileScreen = () => {
                 if(password !== cPassword ) {
                     toast.error('passwords donot match !');
                 } else {
-                    await axios.post('http://localhost:4000/user/update', {username, email, password, _id})
+                    await axios.post(`${BASE_URL}/user/update`, {username, email, password, _id})
                     .then((data) => {console.log("data after user updation :", data);
                     // toast.success('user details updated.');
                     toast.success('user details updated !');
@@ -97,7 +98,7 @@ const ProfileScreen = () => {
                     })
                 }
             } else {
-                await axios.post('http://localhost:4000/user/update', {username, email, _id})
+                await axios.post(`${BASE_URL}/user/update`, {username, email, _id})
                 .then((data) => {
                     console.log("data after user updation :", data);
                     toast.error('user details updated')

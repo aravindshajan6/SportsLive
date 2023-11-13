@@ -4,6 +4,7 @@ import SelectedMatchContext from '../../context/SelectedMatchContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Spinner/Loader';
+import { BASE_URL } from '../../helper.js'
 
 const News = () => {
  
@@ -28,7 +29,7 @@ const News = () => {
         setNews(newsContext);
       } else {
         try {
-          await axios.get("http://localhost:4000/news/getnews")
+          await axios.get(`${BASE_URL}/news/getnews`)
                       .then((data) => {
                         console.log("response data from axios req : ", data);
                         setNews(data.data.jsonResponse.data) ;

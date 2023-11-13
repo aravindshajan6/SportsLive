@@ -4,6 +4,7 @@ import SelectedMatchContext from '../../context/SelectedMatchContext';
 import axios from 'axios';
 import Loader from '../Spinner/Loader';
 import { toast } from 'react-toastify';
+import { BASE_URL } from '../../helper';
 
 
 const HighlightMatch = () => {
@@ -43,7 +44,7 @@ const HighlightMatch = () => {
 
     console.log('inside api call useffect');
     //post req to backend to start api call
-    axios.get('http://localhost:4000/')
+    axios.get(`${BASE_URL}/`)
     .then((data) => {
         console.log("response from backend api call : ", data);
         //returned data set to matchDetails and eventList in context

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Contact.css';
 import axios from 'axios';
 import {toast} from 'react-toastify'
+import { BASE_URL } from '../../helper';
  
 const Contact = () => {
   const [name, setName] = useState();
@@ -12,7 +13,7 @@ const Contact = () => {
   const contactFormHandler = async (e) => {
     e.preventDefault()
     console.log('inside contact form');
-    await axios.post('http://localhost:4000/contact', {name, email, message})
+    await axios.post(`${BASE_URL}/contact`, {name, email, message})
                 .then((data) => {
                   console.log('res from contact axios req : ', data.data.newMessage);
                   toast.success('Message sent successfully !');

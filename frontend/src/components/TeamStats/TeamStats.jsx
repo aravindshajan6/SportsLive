@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './TeamStats.css';
 import axios from 'axios';
 import SelectedMatchContext from '../../context/SelectedMatchContext';
+import { BASE_URL } from '../../helper';
 
 const TeamStats = () => {
 
@@ -18,7 +19,7 @@ const TeamStats = () => {
  const getTeamStatistics = async () => {
   try {
       // eslint-disable-next-line no-unused-vars
-      const response = await axios.get(`http://localhost:4000/match/${matchId}/statistics`)
+      const response = await axios.get(`${BASE_URL}/match/${matchId}/statistics`)
                             .then((data) => {
                               console.log('Statistics data from axios req : ', data.data.jsonResponse.DATA);
                               setMatchStats(data.data.jsonResponse.DATA);

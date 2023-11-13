@@ -5,6 +5,7 @@ import axios from 'axios';
 import Commentary from '../Commentary/Commentary';
 import SelectedMatchContext from '../../context/SelectedMatchContext';
 import Loader from '../Spinner/Loader';
+import { BASE_URL } from '../../helper';
 
 
 const SelectedMatch = () => {
@@ -39,7 +40,7 @@ const SelectedMatch = () => {
     try {
       let matchData;
         // eslint-disable-next-line no-unused-vars
-        const response = await axios.get(`http://localhost:4000/match/${matchId}`)
+        const response = await axios.get(`${BASE_URL}/match/${matchId}`)
                               .then((data) => {
                                 console.log('match data from axios req : ', data.data.jsonResponse.DATA);
                                 matchData = data.data.jsonResponse.DATA;
@@ -57,7 +58,7 @@ const SelectedMatch = () => {
     try {
       let matchData;
         // eslint-disable-next-line no-unused-vars
-        const response = await axios.get(`http://localhost:4000/match/${matchId}/lineups`)
+        const response = await axios.get(`${BASE_URL}/match/${matchId}/lineups`)
                               .then((data) => {
                                 console.log('Lineup data from axios req : ', data.data.jsonResponse.DATA);
                                 matchData = data.data.jsonResponse.DATA;

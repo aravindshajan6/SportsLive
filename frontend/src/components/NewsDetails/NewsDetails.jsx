@@ -5,7 +5,7 @@ import SelectedMatchContext from '../../context/SelectedMatchContext'
 
 const NewsDetails = () => {
 
-    let x;
+    // let x; 
     const {newsContext, newsId} = useContext(SelectedMatchContext);
     useEffect(() => {
         console.log("newsId inside detials : ", newsId );

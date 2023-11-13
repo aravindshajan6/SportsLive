@@ -4,6 +4,7 @@ import './UserComments.css';
 import axios from 'axios';
 import SelectedMatchContext from '../../context/SelectedMatchContext';
 import { toast } from 'react-toastify';
+import { BASE_URL } from '../../helper';
 
  
 
@@ -34,7 +35,7 @@ const UserComments = () => {
         console.log("author value inside post fn :", user.username);
         username = user.username;
         try {
-          await axios.post("http://localhost:4000/user/addcomment", { matchId, username, userComment })
+          await axios.post(`${BASE_URL}/user/addcomment`, { matchId, username, userComment })
           .then((data) => {
             toast.success('comment posted successfully !');
             console.log('data from axios response : ', data);

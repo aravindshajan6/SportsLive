@@ -6,6 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import SelectedMatchContext from '../context/SelectedMatchContext';
 import Cookies from 'js-cookie';
+import { BASE_URL } from '../helper';
 
 
 const LoginScreen = () => {
@@ -26,7 +27,7 @@ const LoginScreen = () => {
       });
       } else {
         try {
-          await axios.post("http://localhost:4000/user/signup", {
+          await axios.post(`${BASE_URL}/user/signup`, {
             username, email, password
           })
           .then((data) => {
@@ -45,7 +46,7 @@ const LoginScreen = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     // try {
-      await axios.post("http://localhost:4000/user/login", {
+      await axios.post(`${BASE_URL}/user/login`, {
         username, password
       })
       .then((data) => {
