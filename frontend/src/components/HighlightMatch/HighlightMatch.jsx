@@ -3,6 +3,7 @@ import './HighLightMatch.css';
 import SelectedMatchContext from '../../context/SelectedMatchContext';
 import axios from 'axios';
 import Loader from '../Spinner/Loader';
+import { toast } from 'react-toastify';
 
 
 const HighlightMatch = () => {
@@ -46,6 +47,10 @@ const HighlightMatch = () => {
     .then((data) => {
         console.log("response from backend api call : ", data);
         //returned data set to matchDetails and eventList in context
+        if(data.data.jsonResponse.DATA.length == 0){
+          console.log('no live matches to show !');
+          toast.warning('no live matches to show!');
+        }
         setMatchDetails(data.data.jsonResponse.DATA);
         setEventList(data.data.jsonResponse.DATA);
         document.getElementById('loader').style.display = 'none';
