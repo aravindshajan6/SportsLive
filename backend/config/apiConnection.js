@@ -1,5 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 
+// LIVESCORE SPORTS API && LIVESCORE6 API
 
 //LiveScore sports
 const optionsRapid = {
