@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const dbConnection = () => {
+    console.log("aaaaaaaaaaa  : ", process.env.AAA);
     mongoose.connect(process.env.mongoAtlasURI, 
     {useUnifiedTopology: true},
     {useNewUrlParser: true})
