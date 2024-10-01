@@ -54,6 +54,8 @@
     white-space: wrap; /* Prevent text from wrapping to the next line */
     overflow: hidden; /* Hide the overflowing content */
     text-overflow: ellipsis;
+    cursor: default;
+    pointer-events: none;;
 }
 
 .tags {
