@@ -6,7 +6,12 @@ export const UNAUTHORIZED_EVENT = 'sl:unauthorized';
 
 // VITE_API_URL: absolute URL of the API, or "/" to use the same origin (Docker/nginx proxy).
 const RAW_API_URL = import.meta.env.VITE_API_URL;
-export const API_URL = (RAW_API_URL === undefined || RAW_API_URL === '' ? 'http://localhost:4000' : RAW_API_URL).replace(/\/+$/, '');
+function resolveApiUrl(raw) {
+  if (raw === undefined || raw === '') return 'http://localhost:4000';
+  if (raw.startsWith('/') || /^https?:\/\//i.test(raw)) return raw;
+  return `https://${raw}`; // bare host (e.g. Render's fromService "host" property)
+}
+export const API_URL = resolveApiUrl(RAW_API_URL).replace(/\/+$/, '');
 
 export const api = axios.create({
   baseURL: `${API_URL}/api`,
@@ -28,7 +33,7 @@ api.interceptors.response.use(
     const message =
       apiError?.message ||
       (error.code === 'ECONNABORTED' ? 'The request timed out. Please try again.' : null) ||
-      (!error.response ? 'Cannot reach the SportsLive server. It may be waking up — try again in a moment.' : null) ||
+      (!error.response ? 'Cannot reach the Sportscast server. It may be waking up — try again in a moment.' : null) ||
       error.message ||
       'Something went wrong';
     const err = new Error(message);

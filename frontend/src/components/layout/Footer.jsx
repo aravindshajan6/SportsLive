@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.bottom}>
-          <span>© {year} SportsLive · Built by Aravind Shajan</span>
+          <span>© {year} Sportscast · Built by Aravind Shajan</span>
           <span className={styles.pulse}><i /> Live data refreshes automatically</span>
         </div>
       </div>

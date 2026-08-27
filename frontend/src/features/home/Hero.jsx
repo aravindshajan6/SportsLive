@@ -10,7 +10,7 @@ import styles from './Hero.module.css';
 
 const HEADLINE = [
   { text: 'Sports', cls: styles.word },
-  { text: 'Live', cls: `${styles.word} ${styles.wordAccent}` },
+  { text: 'cast', cls: `${styles.word} ${styles.wordAccent}` },
 ];
 
 function ScoreboardCard({ featured, loading, liveCount, cardRef, glareRef }) {
@@ -67,7 +67,7 @@ function ScoreboardCard({ featured, loading, liveCount, cardRef, glareRef }) {
     body = (
       <>
         <div className={styles.cardTop}>
-          <span className={styles.cardComp}>SportsLive</span>
+          <span className={styles.cardComp}>Sportscast</span>
           <span className={`${styles.cardStatus} ${styles.cardStatusLive}`}>
             <span className={styles.cardDot} aria-hidden="true" />
             Live
@@ -288,7 +288,7 @@ export default function Hero({ featured, loading, liveCount = 0 }) {
             <Radio size={14} aria-hidden="true" /> Live scores · Fixtures · News
           </span>
           <h1 id="hero-title" className={styles.title}>
-            <span className="visually-hidden">SportsLive</span>
+            <span className="visually-hidden">Sportscast</span>
             <span className={styles.letters} aria-hidden="true">
               {HEADLINE.map((w) => (
                 <span key={w.text} className={w.cls}>

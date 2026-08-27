@@ -3,6 +3,7 @@ import { Activity, LayoutDashboard, Newspaper, Users, CalendarDays, ArrowRight }
 import Button from '@/components/ui/Button.jsx';
 import { useReveal } from '@/hooks/useReveal.js';
 import { animate, countUp, createScope, ensureVisible, prefersReducedMotion, stagger, utils } from '@/lib/anim.js';
+import BrandLogo from '@/components/ui/BrandLogo.jsx';
 import styles from './AboutSection.module.css';
 
 const FEATURES = [
@@ -145,13 +146,13 @@ export default function AboutSection() {
       <div className={styles.hero}>
         <div className={styles.heroText}>
           <span className={styles.eyebrow} data-reveal>
-            About SportsLive
+            About Sportscast
           </span>
           <h1 className={styles.title} data-reveal>
             Every kick, every headline — <span className="gradient-text">one place</span> for football fans.
           </h1>
           <p className={styles.lead} data-reveal>
-            SportsLive brings live scores, fixtures, lineups, in-depth match stats and the latest news together in a fast,
+            Sportscast brings live scores, fixtures, lineups, in-depth match stats and the latest news together in a fast,
             modern experience built for supporters. It was created by <strong className={styles.author}>Aravind Shajan</strong> as a portfolio project
             — match data comes from LiveScore, and the news feed aggregates RSS headlines from BBC Sport, The Guardian, ESPN and
             Sky Sports.
@@ -169,14 +170,13 @@ export default function AboutSection() {
           <div className={styles.logoCard}>
             <span className={styles.orb} />
             <span className={`${styles.orb} ${styles.orb2}`} />
-            <img className={`${styles.logo} ${styles.logoDark}`} src="/logo/logo-no-background.png" alt="" />
-            <img className={`${styles.logo} ${styles.logoLight}`} src="/logo/logo-black.png" alt="" />
+            <BrandLogo height={64} className={styles.logo} />
             <span className={styles.logoTag}>Live football, beautifully delivered</span>
           </div>
         </div>
       </div>
 
-      <ul className={styles.stats} ref={statsRef} data-reveal aria-label="SportsLive at a glance">
+      <ul className={styles.stats} ref={statsRef} data-reveal aria-label="Sportscast at a glance">
         {STATS.map((s) => (
           <li key={s.label} className={styles.stat}>
             <span className={styles.statValue} data-count={s.value} data-suffix={s.suffix}>

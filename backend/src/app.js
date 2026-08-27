@@ -29,7 +29,7 @@ if (!env.isProd && !env.isTest) app.use(morgan('dev'));
 app.use(express.json({ limit: '50kb' }));
 
 app.get('/', (req, res) => {
-  res.json({ name: 'SportsLive API', version: '2.0.0', health: '/api/health' });
+  res.json({ name: 'Sportscast API', version: '2.0.0', health: '/api/health' });
 });
 
 app.use('/api', globalLimiter);

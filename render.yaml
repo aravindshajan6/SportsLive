@@ -1,9 +1,11 @@
-# Render Blueprint — deploys the SportsLive API (web service) and the web app (static site).
-# Dashboard → New → Blueprint → pick this repo. Fill in the env vars marked sync: false when prompted.
+# Render Blueprint — deploys the Sportscast API (web service) and the web app (static site)
+# from the `sportscast` branch. Dashboard → New → Blueprint → pick this repo.
+# You will be prompted for the env vars marked `sync: false` (MONGO_URI, RAPIDAPI_KEY).
 services:
   - type: web
-    name: sportslive
+    name: sportscast
     runtime: node
+    branch: sportscast
     rootDir: backend
     plan: free
     buildCommand: npm ci
@@ -19,19 +21,26 @@ services:
         sync: false            # key for livescore-sports.p.rapidapi.com
       - key: JWT_SECRET
         generateValue: true
+      # Leave empty to allow any origin; tighten to the web app URL once it is known, e.g.
+      # https://sportscast-web.onrender.com
       - key: CORS_ORIGINS
-        value: https://sportslive-web.onrender.com,https://sports-live-api.netlify.app
+        value: ""
 
   - type: web
-    name: sportslive-web
+    name: sportscast-web
     runtime: static
+    branch: sportscast
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
     autoDeployTrigger: commit
     envVars:
+      # Host of the API service above (Render fills this in; the app adds https://).
       - key: VITE_API_URL
-        value: https://sportslive.onrender.com
+        fromService:
+          type: web
+          name: sportscast
+          property: host
     routes:
       - type: rewrite        # SPA fallback for deep links
         source: /*

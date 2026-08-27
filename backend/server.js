@@ -9,7 +9,7 @@ const app = require('./src/app');
 db.connect();
 
 const server = app.listen(env.PORT, () => {
-  logger.info(`SportsLive API listening on http://localhost:${env.PORT} (${env.NODE_ENV})`);
+  logger.info(`Sportscast API listening on http://localhost:${env.PORT} (${env.NODE_ENV})`);
 });
 
 let closing = false;

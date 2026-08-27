@@ -111,7 +111,7 @@ export default function LoginForm({ next, onSwitch, onError }) {
           {!submitting && <ArrowRight size={18} />}
         </Button>
         <p className={styles.switch}>
-          New to SportsLive?{' '}
+          New to Sportscast?{' '}
           <button type="button" className={styles.switchBtn} onClick={onSwitch} disabled={submitting}>
             Create account
           </button>

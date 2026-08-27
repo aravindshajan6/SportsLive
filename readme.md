@@ -1,8 +1,9 @@
-# ⚽ SportsLive
+# ⚽ Sportscast
 
 Live football scores, fixtures, lineups, match stats and the latest football news — one stop for every football enthusiast.
 
-**Live:** https://sports-live-api.netlify.app/ · **API:** https://sportslive.onrender.com/api/health
+**Live (Render blueprint, `sportscast` branch):** web app `https://sportscast-web.onrender.com` · API `https://sportscast.onrender.com/api/health`
+(the legacy v1 deployment lives on `main`: Netlify `https://sports-live-api.netlify.app`)
 
 | Frontend | Backend | Infra |
 | --- | --- | --- |
@@ -21,7 +22,7 @@ Live football scores, fixtures, lineups, match stats and the latest football new
 ## Project structure
 
 ```
-SportsLive/
+Sportscast/
 ├─ backend/            Express API (see backend/README section below)
 │  ├─ server.js
 │  ├─ src/{app.js, config, lib, middleware, models, routes, services}
@@ -52,7 +53,7 @@ docker compose up -d --build
 
 ## Getting started (without Docker)
 
-Requirements: Node ≥ 20.18, a MongoDB instance (Atlas or local — e.g. `docker run -d --name sportslive-mongo -p 27017:27017 mongo:7`), and a RapidAPI key for [LiveScore Sports](https://rapidapi.com/) (`livescore-sports.p.rapidapi.com`).
+Requirements: Node ≥ 20.18, a MongoDB instance (Atlas or local — e.g. `docker run -d --name sportscast-mongo -p 27017:27017 mongo:7`), and a RapidAPI key for [LiveScore Sports](https://rapidapi.com/) (`livescore-sports.p.rapidapi.com`).
 
 ```bash
 # 1) backend
@@ -113,7 +114,7 @@ Upstream responses are cached in memory (30 s – 10 min depending on the route)
 
 ## Deployment
 
-- **Render (blueprint)**: `render.yaml` defines the API (`sportslive`, Node web service, root `backend`, health check `/api/health`) and the web app (`sportslive-web`, static site, root `frontend`, SPA rewrite). Dashboard → *New → Blueprint* → select this repo, then provide `MONGO_URI` and `RAPIDAPI_KEY` when prompted (`JWT_SECRET` is generated). To reuse the existing `sportslive` service instead, set its build command to `npm ci`, start command to `node server.js`, root dir `backend`, and add the env vars above (`RAPIDAPI_KEY` is required now that the key is no longer in the code; legacy `mongoAtlasURI`/`SECRET_KEY` names still work).
+- **Render (blueprint)**: `render.yaml` defines the API (`sportscast`, Node web service, root `backend`, health check `/api/health`) and the web app (`sportscast-web`, static site, root `frontend`, SPA rewrite). Dashboard → *New → Blueprint* → select this repo, then provide `MONGO_URI` and `RAPIDAPI_KEY` when prompted (`JWT_SECRET` is generated). To reuse the existing `sportscast` service instead, set its build command to `npm ci`, start command to `node server.js`, root dir `backend`, and add the env vars above (`RAPIDAPI_KEY` is required now that the key is no longer in the code; legacy `mongoAtlasURI`/`SECRET_KEY` names still work).
 - **Netlify (frontend alternative)**: `netlify.toml` builds `frontend/` and publishes `dist/` with an SPA fallback.
 - **Docker**: see "Run everything with Docker" above.
 

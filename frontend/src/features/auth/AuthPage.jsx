@@ -7,6 +7,7 @@ import { animate, createScope, prefersReducedMotion, stagger, utils } from '@/li
 import LoginForm from './LoginForm.jsx';
 import SignupForm from './SignupForm.jsx';
 import { safeNext } from './validation.js';
+import BrandLogo from '@/components/ui/BrandLogo.jsx';
 import styles from './AuthPage.module.css';
 
 const FEATURES = [
@@ -158,9 +159,11 @@ export default function AuthPage({ mode = 'login' }) {
   return (
     <div className={styles.page}>
       {/* ---------- brand panel ---------- */}
-      <aside className={styles.brand} ref={brandRef} aria-label="About SportsLive">
+      <aside className={styles.brand} ref={brandRef} aria-label="About Sportscast">
         <div className={styles.brandInner}>
-          <img className={styles.logo} src="/logo/logo-no-background.png" alt="SportsLive" data-enter />
+          <div className={styles.logo} data-enter>
+            <BrandLogo height={44} variant="light" />
+          </div>
           <h2 className={styles.headline} data-enter>
             Your seat <span className={styles.headlineAccent}>in the stands.</span>
           </h2>

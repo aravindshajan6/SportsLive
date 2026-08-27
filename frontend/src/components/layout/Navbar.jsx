@@ -78,7 +78,7 @@ export default function Navbar() {
   return (
     <header className={[styles.nav, scrolled && styles.scrolled].filter(Boolean).join(' ')}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.brand} aria-label="SportsLive home">
+        <Link to="/" className={styles.brand} aria-label="Sportscast home">
           <BrandLogo height={38} />
         </Link>
 

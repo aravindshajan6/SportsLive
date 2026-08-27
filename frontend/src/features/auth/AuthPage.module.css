@@ -19,6 +19,7 @@
 }
 .brandInner { position: relative; z-index: 2; max-width: 460px; }
 .logo { height: 44px; width: auto; margin-bottom: clamp(28px, 5vw, 56px); }
+.logo svg { height: 100%; width: auto; }
 .headline {
   font-size: clamp(2rem, 4.2vw, 3.4rem);
   line-height: 1.05;

@@ -1,4 +1,4 @@
-# Netlify configuration for the SportsLive frontend (Vite SPA).
+# Netlify configuration for the Sportscast frontend (Vite SPA).
 [build]
   base = "frontend"
   command = "npm ci && npm run build"

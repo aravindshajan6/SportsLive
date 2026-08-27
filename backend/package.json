@@ -1,7 +1,7 @@
 {
-  "name": "sportslive-backend",
+  "name": "sportscast-backend",
   "version": "2.0.0",
-  "description": "SportsLive API: live football scores (LiveScore via RapidAPI), RSS news aggregation, user comments",
+  "description": "Sportscast API: live football scores (LiveScore via RapidAPI), RSS news aggregation, user comments",
   "main": "server.js",
   "private": true,
   "scripts": {
