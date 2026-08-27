@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const env = require('./config/env');
+const logger = require('./lib/logger');
 const { globalLimiter } = require('./middleware/rateLimit');
 const { notFound, errorHandler } = require('./middleware/errors');
 
@@ -18,7 +19,11 @@ app.use(helmet());
 app.use(
   cors({
     origin: env.CORS_ORIGINS.length
-      ? (origin, cb) => cb(null, !origin || env.CORS_ORIGINS.includes(origin))
+      ? (origin, cb) => {
+          const allowed = !origin || env.CORS_ORIGINS.includes(env.normalizeOrigin(origin));
+          if (!allowed) logger.warn(`CORS: origin ${origin} not in CORS_ORIGINS [${env.CORS_ORIGINS.join(', ')}]`);
+          cb(null, allowed);
+        }
       : '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

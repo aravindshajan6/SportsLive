@@ -12,13 +12,27 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const isProd = NODE_ENV === 'production';
 const isTest = NODE_ENV === 'test';
 
+/** Normalize an origin so "Example.com/", "https://example.com" and " example.com " all match. */
+function normalizeOrigin(value) {
+  let s = String(value || '').trim().toLowerCase();
+  if (!s) return '';
+  if (!/^https?:\/\//.test(s)) s = `https://${s}`;
+  try {
+    return new URL(s).origin; // scheme + host (+ port), no path or trailing slash
+  } catch {
+    return s.replace(/\/+$/, '');
+  }
+}
+
 function parseList(value) {
   if (!value) return [];
   return value
-    .split(',')
+    .split(/[,\s]+/)
     .map((s) => s.trim())
     .filter(Boolean)
-    .filter((s) => s !== '*');
+    .filter((s) => s !== '*')
+    .map(normalizeOrigin)
+    .filter(Boolean);
 }
 
 // Backwards compatibility: the Render deployment still defines the legacy names.
@@ -40,6 +54,7 @@ if (!MONGO_URI && !isTest) {
 }
 
 module.exports = Object.freeze({
+  normalizeOrigin,
   NODE_ENV,
   isProd,
   isTest,
