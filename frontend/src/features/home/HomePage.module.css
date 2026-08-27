@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--section-gap) * 0.6);
+  padding-top: calc(var(--section-gap) * 0.6);
+}

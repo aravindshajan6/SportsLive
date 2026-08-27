@@ -1,0 +1,129 @@
+/* ------------------------------------------------------------------
+   SportsLive design tokens
+   Light theme is the default; [data-theme="dark"] overrides.
+   ------------------------------------------------------------------ */
+:root {
+  /* surfaces */
+  --bg: #f5f6fb;
+  --bg-elev: #ffffff;
+  --bg-soft: #ecedf8;
+  --surface: #ffffff;
+  --surface-2: #f0f1fa;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --border: rgba(20, 18, 60, 0.1);
+  --border-strong: rgba(20, 18, 60, 0.18);
+
+  /* text */
+  --text: #12113a;
+  --text-2: #4b4a70;
+  --text-3: #8180a3;
+  --text-on-dark: #f3f2ff;
+
+  /* accents */
+  --accent: #5b4bff;
+  --accent-hover: #4a3af0;
+  --accent-2: #0ea5e9;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(91, 75, 255, 0.12);
+  --accent-2-soft: rgba(14, 165, 233, 0.14);
+  --live: #e11d48;
+  --live-soft: rgba(225, 29, 72, 0.12);
+  --success: #16a34a;
+  --success-soft: rgba(22, 163, 74, 0.12);
+  --warn: #d97706;
+  --warn-soft: rgba(217, 119, 6, 0.14);
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.12);
+  --yellow-card: #facc15;
+  --red-card: #ef4444;
+  --pitch: #1f8a4c;
+  --pitch-2: #22a058;
+
+  /* gradients */
+  --hero-grad: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%);
+  --brand-grad: linear-gradient(135deg, #5b4bff, #0ea5e9);
+  --brand-grad-text: linear-gradient(90deg, #5b4bff 0%, #0ea5e9 100%);
+  --card-grad: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 241, 250, 0.9));
+
+  /* elevation */
+  --shadow-1: 0 1px 2px rgba(20, 18, 60, 0.06), 0 4px 16px rgba(20, 18, 60, 0.06);
+  --shadow-2: 0 12px 40px rgba(20, 18, 60, 0.14);
+  --shadow-glow: 0 0 0 1px rgba(91, 75, 255, 0.25), 0 12px 40px rgba(91, 75, 255, 0.25);
+
+  /* shape */
+  --radius-s: 8px;
+  --radius: 14px;
+  --radius-l: 22px;
+  --radius-pill: 999px;
+
+  /* type */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.25rem;
+  --fs-4xl: clamp(2.5rem, 6vw, 4.5rem);
+
+  /* layout */
+  --nav-h: 72px;
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-gap: clamp(48px, 8vw, 96px);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.18s;
+  --dur: 0.35s;
+  --dur-slow: 0.6s;
+
+  /* z-index scale */
+  --z-nav: 100;
+  --z-drawer: 110;
+  --z-toast: 1000;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0a1f;
+  --bg-elev: #12112b;
+  --bg-soft: #16153a;
+  --surface: #14132f;
+  --surface-2: #1b1a40;
+  --surface-glass: rgba(14, 13, 34, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text: #f3f2ff;
+  --text-2: #b6b4d6;
+  --text-3: #7d7ba3;
+
+  --accent: #7c6cff;
+  --accent-hover: #8f82ff;
+  --accent-2: #22d3ee;
+  --accent-contrast: #0b0a1f;
+  --accent-soft: rgba(124, 108, 255, 0.18);
+  --accent-2-soft: rgba(34, 211, 238, 0.16);
+  --live: #ff3b5c;
+  --live-soft: rgba(255, 59, 92, 0.16);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.16);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.16);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.16);
+  --pitch: #1d7a44;
+  --pitch-2: #22904f;
+
+  --brand-grad: linear-gradient(135deg, #7c6cff, #22d3ee);
+  --brand-grad-text: linear-gradient(90deg, #a79cff 0%, #22d3ee 100%);
+  --card-grad: linear-gradient(180deg, rgba(27, 26, 64, 0.9), rgba(20, 19, 47, 0.9));
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 16px 48px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 1px rgba(124, 108, 255, 0.35), 0 12px 40px rgba(124, 108, 255, 0.3);
+}

@@ -1,0 +1,33 @@
+.field { display: flex; flex-direction: column; gap: 6px; }
+.label { font-size: var(--fs-sm); font-weight: 600; color: var(--text-2); }
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-md);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease, background var(--dur) ease;
+}
+.input::placeholder { color: var(--text-3); }
+.input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.hasIcon .input { padding-left: 42px; }
+.hasSuffix .input { padding-right: 44px; }
+.icon { position: absolute; left: 14px; color: var(--text-3); pointer-events: none; display: flex; }
+.suffix { position: absolute; right: 8px; display: flex; }
+.suffixBtn {
+  width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; color: var(--text-3);
+}
+.suffixBtn:hover { background: var(--surface-2); color: var(--text); }
+.textarea { height: auto; min-height: 120px; padding: 12px 14px; resize: vertical; line-height: 1.5; }
+.invalid .input { border-color: var(--danger); }
+.invalid .input:focus { box-shadow: 0 0 0 4px var(--danger-soft); }
+.error { font-size: var(--fs-xs); color: var(--danger); }
+.hint { font-size: var(--fs-xs); color: var(--text-3); }

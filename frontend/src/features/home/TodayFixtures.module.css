@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.skGroup {
+  border-radius: var(--radius-l);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.skHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.skRow {
+  display: grid;
+  grid-template-columns: 46px 1fr 54px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 4px;
+}
+.skRow > :nth-child(2) {
+  justify-self: end;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

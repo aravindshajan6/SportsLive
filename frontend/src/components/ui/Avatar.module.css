@@ -1,0 +1,15 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: var(--size, 40px);
+  height: var(--size, 40px);
+  border-radius: 50%;
+  background: var(--brand-grad);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--size, 40px) * 0.4);
+  letter-spacing: 0.02em;
+  flex: 0 0 auto;
+  user-select: none;
+}

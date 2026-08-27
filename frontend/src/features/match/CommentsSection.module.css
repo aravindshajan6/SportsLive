@@ -1,0 +1,116 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.composerHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.composerName {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+.composerFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.counter {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.counterWarn {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.signin {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface) 65%);
+}
+.signinIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  flex: 0 0 auto;
+}
+.signinText {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.signinTitle {
+  font-size: var(--fs-md);
+}
+.signinDesc {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+
+.listHead {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+  padding: 4px 2px 0;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: opacity var(--dur) ease;
+}
+.pending {
+  opacity: 0.6;
+}
+.itemBody {
+  min-width: 0;
+  flex: 1;
+}
+.itemHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.user {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+.time {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.text {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.55;
+}

@@ -1,0 +1,81 @@
+/* Shared form chrome for LoginForm / SignupForm / EditProfileForm */
+.form { display: flex; flex-direction: column; gap: 16px; }
+.head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 6px; }
+.title { font-size: var(--fs-2xl); letter-spacing: -0.02em; }
+.subtitle { color: var(--text-2); font-size: var(--fs-sm); }
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 30%, transparent);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.alert svg { flex: 0 0 auto; margin-top: 1px; }
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+
+.actions { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+.switch { text-align: center; font-size: var(--fs-sm); color: var(--text-2); }
+.switchBtn {
+  color: var(--accent);
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: background var(--dur-fast) ease;
+}
+.switchBtn:hover { background: var(--accent-soft); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-3);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* sections inside the profile edit form */
+.section { display: flex; flex-direction: column; gap: 14px; }
+.sectionHead { display: flex; align-items: center; gap: 10px; padding-top: 6px; }
+.sectionTitle { font-size: var(--fs-md); font-family: var(--font-display); font-weight: 600; }
+.sectionIcon {
+  width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent); flex: 0 0 auto;
+}
+.sectionNote { font-size: var(--fs-xs); color: var(--text-3); margin-left: auto; }
+.saveRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.dirtyNote { font-size: var(--fs-xs); color: var(--text-3); }
+.dirtyNote.isDirty { color: var(--warn); font-weight: 500; }
+
+/* password strength meter */
+.strength { --tone: var(--text-3); display: flex; flex-direction: column; gap: 6px; margin-top: -6px; }
+.strength.weak { --tone: var(--danger); }
+.strength.fair { --tone: var(--warn); }
+.strength.good { --tone: var(--accent-2); }
+.strength.strong { --tone: var(--success); }
+.strengthBar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.seg {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transform-origin: center;
+  transition: background var(--dur) ease, border-color var(--dur) ease, box-shadow var(--dur) ease;
+}
+.segOn { background: var(--tone); border-color: var(--tone); box-shadow: 0 0 10px color-mix(in srgb, var(--tone) 45%, transparent); }
+.strengthText { display: flex; justify-content: space-between; gap: 10px; font-size: var(--fs-xs); }
+.strengthLabel { font-weight: 600; color: var(--tone); }
+.strengthHint { color: var(--text-3); text-align: right; }
+
+.success { display: inline-flex; align-items: center; gap: 4px; color: var(--success); font-size: var(--fs-xs); font-weight: 500; }

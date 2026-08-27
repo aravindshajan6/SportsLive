@@ -1,62 +1,79 @@
-import { BrowserRouter, Route, Routes, useLocation  } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import LoginScreen from './screens/LoginScreen'
-import MatchDetailsScreen from './screens/MatchDetailsScreen'
-import './App.css';
-import Footer from "./components/Footer/Footer";
-import  Navbar  from "./components/Navbar/Navbar";
-import AboutScreen from "./screens/AboutScreen";
-import NewsScreen from "./screens/NewsScreen";
-import SelectedMatchContextProvider from "./context/SelectedMatchContextProvider";
-
+import { useEffect } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NewsDetails from "./components/NewsDetails/NewsDetails";
-import ProfileScreen from "./screens/ProfileScreen";
 
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import { ThemeProvider, useTheme } from '@/context/ThemeContext.jsx';
+import { AuthProvider } from '@/context/AuthContext.jsx';
+import { enableJsAnimations } from '@/lib/anim.js';
 
-// import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import Navbar from '@/components/layout/Navbar.jsx';
+import Footer from '@/components/layout/Footer.jsx';
+import ScrollToTop from '@/components/ui/ScrollToTop.jsx';
+import PageTransition from '@/components/ui/PageTransition.jsx';
+import BackToTop from '@/components/ui/BackToTop.jsx';
+import ProtectedRoute from '@/components/ProtectedRoute.jsx';
 
+import HomePage from '@/features/home/HomePage.jsx';
+import MatchesPage from '@/features/matches/MatchesPage.jsx';
+import MatchPage from '@/features/match/MatchPage.jsx';
+import NewsPage from '@/features/news/NewsPage.jsx';
+import AuthPage from '@/features/auth/AuthPage.jsx';
+import ProfilePage from '@/features/auth/ProfilePage.jsx';
+import AboutPage from '@/features/about/AboutPage.jsx';
+import NotFoundPage from '@/pages/NotFoundPage.jsx';
 
-const Routing = () => {
-  
+function Toasts() {
+  const { theme } = useTheme();
+  return <ToastContainer theme={theme} position="bottom-right" autoClose={3500} newestOnTop closeOnClick pauseOnHover />;
+}
+
+function Shell() {
+  useEffect(() => {
+    enableJsAnimations();
+  }, []);
   return (
     <>
-        <ScrollToTop />
-        <Routes>
-          <Route path='/' element={<HomeScreen />} />
-          <Route path='/news' element={<NewsScreen />} />
-          <Route path='/login' element={<LoginScreen />} />
-          <Route path='/profile' element={<ProfileScreen />} />
-          <Route path='/match/:matchId' element={<MatchDetailsScreen  />} />
-          <Route path='/about' element={<AboutScreen />} />
-          <Route path='/news/details' element={<NewsDetails />} />
-        </Routes>
+      <ScrollToTop />
+      <Navbar />
+      <main id="main">
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/matches" element={<MatchesPage />} />
+            <Route path="/match/:id" element={<MatchPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/news/details" element={<Navigate to="/news" replace />} />
+            <Route path="/login" element={<AuthPage mode="login" />} />
+            <Route path="/signup" element={<AuthPage mode="signup" />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </PageTransition>
+      </main>
+      <Footer />
+      <BackToTop />
+      <Toasts />
     </>
-      
   );
 }
 
-
-function App() {
-
-  
+export default function App() {
   return (
-    <>
-    <BrowserRouter>
-          <SelectedMatchContextProvider>
-              <Navbar />
-              <Routing />
-          </SelectedMatchContextProvider>
-              <Footer />
-        <ToastContainer />
-    </BrowserRouter>
-
-    </>
-  )
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Shell />
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
+  );
 }
-
-
-
-export default App

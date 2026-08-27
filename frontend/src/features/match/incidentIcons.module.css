@@ -1,0 +1,65 @@
+.ball {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+.ballBg {
+  fill: var(--text);
+}
+.ballInk {
+  fill: var(--surface);
+  stroke: var(--surface);
+}
+.penalty .ballBg {
+  fill: var(--accent);
+}
+.penalty .ballInk {
+  fill: #fff;
+  stroke: #fff;
+}
+.own .ballBg {
+  fill: var(--danger);
+}
+.own .ballInk {
+  fill: #fff;
+  stroke: #fff;
+}
+.missed .ballBg {
+  fill: var(--text-3);
+}
+.missed .ballInk {
+  fill: var(--surface);
+  stroke: var(--surface);
+}
+.cross {
+  stroke: var(--danger);
+}
+
+.card {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: calc(var(--sz, 18px) * 0.7);
+  height: var(--sz, 18px);
+  border-radius: 3px;
+  background: var(--yellow-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.red {
+  background: var(--red-card);
+}
+.yellowRed {
+  background: linear-gradient(135deg, var(--yellow-card) 0 50%, var(--red-card) 50% 100%);
+}
+
+.sub {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0;
+}
+.subIn {
+  color: var(--success);
+  margin-right: -4px;
+}
+.subOut {
+  color: var(--danger);
+}

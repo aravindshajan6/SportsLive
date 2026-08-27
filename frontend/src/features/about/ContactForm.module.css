@@ -1,0 +1,89 @@
+.card {
+  padding: clamp(20px, 3vw, 30px);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.serverError {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+}
+@media (max-width: 480px) {
+  .submit {
+    width: 100%;
+  }
+}
+
+/* ---- success panel --------------------------------------------------- */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 8px;
+}
+.successIcon {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--success-soft);
+  color: var(--success);
+  margin-bottom: 6px;
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--success) 8%, transparent);
+}
+.successTitle {
+  font-size: var(--fs-xl);
+  letter-spacing: -0.02em;
+}
+.successText {
+  color: var(--text-2);
+  max-width: 44ch;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}

@@ -1,0 +1,14 @@
+# Netlify configuration for the SportsLive frontend (Vite SPA).
+[build]
+  base = "frontend"
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback so deep links like /match/1810641 work on refresh
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

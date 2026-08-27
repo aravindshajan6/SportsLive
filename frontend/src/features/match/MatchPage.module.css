@@ -1,0 +1,103 @@
+.page {
+  padding-top: 20px;
+  padding-bottom: var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tabsWrap {
+  position: sticky;
+  top: calc(var(--nav-h) + 6px);
+  z-index: 5;
+  padding: 6px 0;
+  background: var(--bg);
+  transition: background var(--dur) ease;
+}
+
+.panel {
+  min-height: 240px;
+}
+
+.footNote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  padding-top: 8px;
+}
+.footLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.footLink:hover {
+  color: var(--accent);
+}
+
+.errorActions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- skeletons ---------- */
+.headerSkeleton {
+  background: var(--hero-grad);
+  border-radius: var(--radius-l);
+  padding: 18px clamp(14px, 4vw, 36px) 26px;
+  box-shadow: var(--shadow-2);
+}
+.headerSkeleton :global(span) {
+  background: rgba(255, 255, 255, 0.12);
+}
+.skTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.skMain {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+.skTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+}
+.skRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.skLines {
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding-top: 12px;
+    gap: 14px;
+  }
+  .tabsWrap {
+    top: var(--nav-h);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+}

@@ -1,0 +1,128 @@
+.wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-1);
+  padding: clamp(14px, 3vw, 26px);
+}
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.teamHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+.teamHeadAway {
+  justify-content: flex-end;
+}
+.headLabel {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  padding: 10px 0 8px;
+  border-bottom: 1px dashed var(--border);
+}
+.row:last-child {
+  border-bottom: 0;
+}
+.values {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+.val:last-child {
+  text-align: right;
+}
+.lead {
+  color: var(--text);
+}
+.label {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  text-align: center;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  height: 8px;
+}
+.halfL,
+.halfR {
+  display: flex;
+  height: 100%;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.halfL {
+  justify-content: flex-end;
+  border-radius: 4px 2px 2px 4px;
+}
+.halfR {
+  justify-content: flex-start;
+  border-radius: 2px 4px 4px 2px;
+}
+.bar {
+  display: block;
+  height: 100%;
+  background: var(--text-3);
+  opacity: 0.55;
+  will-change: transform;
+}
+.barHome {
+  transform-origin: right center;
+  border-radius: 4px 0 0 4px;
+}
+.barAway {
+  transform-origin: left center;
+  border-radius: 0 4px 4px 0;
+}
+.barLead {
+  opacity: 1;
+  background: var(--accent);
+}
+.barAway.barLead {
+  background: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .teamName {
+    display: none;
+  }
+  .val {
+    font-size: var(--fs-sm);
+  }
+  .label {
+    font-size: var(--fs-xs);
+  }
+}

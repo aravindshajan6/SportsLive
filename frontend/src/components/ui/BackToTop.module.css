@@ -1,0 +1,20 @@
+.btn {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: var(--z-nav);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(91, 75, 255, 0.35);
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition: opacity var(--dur) ease, transform var(--dur) var(--ease-out);
+}
+:global([data-theme='dark']) .btn { color: #0b0a1f; }
+.show { opacity: 1; transform: none; pointer-events: auto; }

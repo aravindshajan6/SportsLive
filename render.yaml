@@ -1,0 +1,42 @@
+# Render Blueprint — deploys the SportsLive API (web service) and the web app (static site).
+# Dashboard → New → Blueprint → pick this repo. Fill in the env vars marked sync: false when prompted.
+services:
+  - type: web
+    name: sportslive
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm ci
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false            # MongoDB Atlas connection string
+      - key: RAPIDAPI_KEY
+        sync: false            # key for livescore-sports.p.rapidapi.com
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://sportslive-web.onrender.com,https://sports-live-api.netlify.app
+
+  - type: web
+    name: sportslive-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    autoDeployTrigger: commit
+    envVars:
+      - key: VITE_API_URL
+        value: https://sportslive.onrender.com
+    routes:
+      - type: rewrite        # SPA fallback for deep links
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

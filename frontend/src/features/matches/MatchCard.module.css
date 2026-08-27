@@ -1,0 +1,274 @@
+.perspective {
+  perspective: 1200px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+  color: var(--text);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur) var(--ease-out), background var(--dur) ease;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-2);
+}
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.compact {
+  padding: 9px 12px;
+  gap: 8px 10px;
+  grid-template-columns: 54px minmax(0, 1fr);
+  box-shadow: none;
+}
+.isLive {
+  border-color: color-mix(in srgb, var(--live) 35%, var(--border));
+}
+
+/* goal flash + hover glare (both live inside the card, clipped by its radius) */
+.flash,
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+.flash {
+  background: radial-gradient(circle at 50% 50%, var(--live-soft), transparent 70%);
+}
+.glare {
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.22), transparent 55%);
+  transition: opacity var(--dur) ease;
+  mix-blend-mode: screen;
+}
+:global([data-theme='light']) .glare {
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(91, 75, 255, 0.12), transparent 55%);
+  mix-blend-mode: normal;
+}
+
+/* status pill ------------------------------------------------------- */
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 52px;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--text-2);
+  transform: translateZ(12px);
+}
+.status.live {
+  background: var(--live-soft);
+  color: var(--live);
+}
+.status.finished {
+  background: var(--surface-2);
+  color: var(--text-3);
+}
+.status.upcoming {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.status.warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.6s ease-out infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 59, 92, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(255, 59, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 92, 0); }
+}
+
+/* teams + score ------------------------------------------------------ */
+.teams {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  transform: translateZ(10px);
+}
+.home {
+  justify-content: flex-end;
+  text-align: right;
+}
+.away {
+  justify-content: flex-start;
+  text-align: left;
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.compact .name {
+  font-size: var(--fs-xs);
+}
+.winner .name {
+  font-weight: 700;
+}
+.loser .name {
+  color: var(--text-2);
+  font-weight: 500;
+}
+.badge {
+  flex: 0 0 auto;
+}
+
+.score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 64px;
+  padding: 2px 8px;
+  border-radius: var(--radius-s);
+  background: var(--surface-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  transform: translateZ(24px);
+  perspective: 300px;
+}
+.compact .score {
+  min-width: 56px;
+  font-size: var(--fs-md);
+}
+.isLive .score {
+  background: var(--live-soft);
+  color: var(--live);
+}
+.digit {
+  display: inline-block;
+  min-width: 1ch;
+  text-align: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.sep {
+  color: var(--text-3);
+  font-weight: 500;
+}
+.isLive .sep {
+  color: currentColor;
+  opacity: 0.6;
+}
+.noScore {
+  background: transparent;
+}
+.vs {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+}
+
+/* meta line ---------------------------------------------------------- */
+.meta {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  margin-top: -2px;
+}
+.comp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.agg {
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* mobile ------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .card {
+    grid-template-columns: 50px minmax(0, 1fr);
+    padding: 10px 10px;
+    gap: 8px;
+  }
+  .status {
+    min-width: 46px;
+    padding: 3px 6px;
+    font-size: 0.68rem;
+  }
+  .teams {
+    gap: 6px;
+  }
+  /* stack badge above name so the full column width is available for long team names */
+  .team {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    font-size: var(--fs-xs);
+  }
+  .home {
+    flex-direction: column-reverse; /* DOM order is name→badge; keep the badge on top for both sides */
+  }
+  .name {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    font-size: 11.5px;
+    letter-spacing: -0.01em;
+    overflow-wrap: normal; /* never split a team name mid-word */
+    hyphens: none;
+    width: 100%;
+  }
+  .score {
+    min-width: 52px;
+    font-size: var(--fs-md);
+    padding: 2px 6px;
+  }
+  .compact .score {
+    min-width: 48px;
+  }
+}

@@ -1,0 +1,127 @@
+.section {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--section-gap) / 2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+  gap: clamp(20px, 3vw, 32px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.formCol,
+.infoCol {
+  min-width: 0;
+}
+
+.infoCard {
+  padding: 24px;
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+}
+
+.infoList,
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoItem,
+.social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: var(--radius);
+  min-width: 0;
+  transition: transform var(--dur) var(--ease-out), background var(--dur-fast) ease, box-shadow var(--dur) var(--ease-out);
+}
+.infoLink:hover,
+.social:hover,
+.infoLink:focus-visible,
+.social:focus-visible {
+  background: var(--surface-2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-1);
+}
+.infoLink:hover .infoValue,
+.social:hover .infoValue {
+  color: var(--accent);
+}
+
+.infoIcon,
+.socialIcon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition: transform var(--dur) var(--ease-out), background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.infoLink:hover .infoIcon,
+.social:hover .socialIcon {
+  transform: rotate(-8deg) scale(1.08);
+}
+.live {
+  background: var(--live-soft);
+  color: var(--live);
+}
+.accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.success {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.socialIcon {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.social:hover .socialIcon {
+  background: var(--brand-grad);
+  color: #fff;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.infoLabel {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.infoValue {
+  font-weight: 600;
+  color: var(--text);
+  overflow-wrap: anywhere;
+  transition: color var(--dur-fast) ease;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 18px 0;
+}
+.socialTitle {
+  font-size: var(--fs-md);
+  margin-bottom: 10px;
+}

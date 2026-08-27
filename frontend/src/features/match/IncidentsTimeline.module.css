@@ -1,0 +1,324 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 4px 6px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-2);
+}
+.legendTeam {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.timeline {
+  position: relative;
+  padding: 8px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, var(--border-strong) 8%, var(--border-strong) 92%, transparent);
+}
+.period {
+  position: relative;
+}
+.periodHead,
+.periodFoot,
+.finalLine {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.periodHead span,
+.periodFoot span,
+.finalLine span {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+.finalLine span {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--accent-contrast);
+}
+:global([data-theme='light']) .finalLine span {
+  color: #fff;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.event {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.side {
+  min-width: 0;
+}
+.minute {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.minute span {
+  min-width: 44px;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-1);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.body {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color var(--dur-fast) ease, transform var(--dur) var(--ease-out);
+}
+.body:hover {
+  border-color: var(--border-strong);
+}
+.body[data-type='goal'],
+.body[data-type='penalty'] {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: linear-gradient(90deg, var(--accent-soft), var(--surface) 70%);
+}
+.home .body[data-type='goal'],
+.home .body[data-type='penalty'] {
+  background: linear-gradient(270deg, var(--accent-soft), var(--surface) 70%);
+}
+.body[data-type='red'],
+.body[data-type='yellow-red'],
+.body[data-type='own-goal'] {
+  border-color: color-mix(in srgb, var(--danger) 45%, var(--border));
+}
+.icon {
+  display: grid;
+  place-items: center;
+  height: 22px;
+  flex: 0 0 auto;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: var(--fs-sm);
+}
+.name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.tag,
+.scoreTag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.tagDanger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.tagMuted {
+  background: var(--surface-2);
+  color: var(--text-3);
+}
+.scoreTag {
+  align-self: flex-start;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  background: var(--text);
+  color: var(--surface);
+}
+.assist,
+.subOut {
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.subOut {
+  color: var(--danger);
+}
+
+/* home: content sits to the left of the line and reads right-to-left */
+.home .side:first-child {
+  display: flex;
+  justify-content: flex-end;
+}
+.home .body {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+.home .text {
+  align-items: flex-end;
+}
+.home .name {
+  justify-content: flex-end;
+}
+.home .scoreTag {
+  align-self: flex-end;
+}
+.away .side:last-child {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ---------- kickoff panel (upcoming) ---------- */
+.kickoff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 32px 20px;
+}
+.kickTeams {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.kickVs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: var(--fs-sm);
+}
+.kickEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+}
+.kickCount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: var(--brand-grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.kickMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+}
+.kickMeta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- mobile: single column ---------- */
+@media (max-width: 639px) {
+  .timeline::before {
+    left: 27px;
+  }
+  .event {
+    grid-template-columns: 56px 1fr;
+  }
+  .side:empty {
+    display: none;
+  }
+  .minute {
+    order: 0;
+  }
+  .side {
+    order: 1;
+  }
+  .home .side:first-child,
+  .away .side:last-child {
+    justify-content: flex-start;
+  }
+  .home .body {
+    flex-direction: row;
+    text-align: left;
+    border-left: 3px solid var(--accent);
+  }
+  .away .body {
+    border-left: 3px solid var(--accent-2);
+  }
+  .home .text {
+    align-items: flex-start;
+  }
+  .home .name {
+    justify-content: flex-start;
+  }
+  .home .scoreTag {
+    align-self: flex-start;
+  }
+  .home .body[data-type='goal'],
+  .home .body[data-type='penalty'] {
+    background: linear-gradient(90deg, var(--accent-soft), var(--surface) 70%);
+  }
+  .periodHead,
+  .periodFoot,
+  .finalLine {
+    justify-content: flex-start;
+  }
+  .legend {
+    font-size: var(--fs-xs);
+  }
+}

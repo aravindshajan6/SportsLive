@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet title="XSL_formatting" type="text/xsl" href="/rss/rssRender.xsl"?>
+    <rss version='2.0'>
+    <channel>
+       <title>SkySports | News</title>
+       <link>http://www.skysports.com</link>
+       <description>Sports News</description>
+       <language>en-gb</language>
+       <lastBuildDate>Thu, 27 Aug 2026 11:07:37 BST</lastBuildDate>
+       <copyright>Copyright 2026, BSKYB. All Rights Reserved.</copyright>
+       <category></category>
+       <image>
+            <title>Sky Sports</title>
+            <url>https://www.skysports.com/images/site/ss-logo-07.gif</url>
+            <link>https://www.skysports.com</link>
+       </image>
+       <ttl>120</ttl>
+       	<item>
+           <title><![CDATA[Rain delays start to England's second Test vs Pakistan at Lord's LIVE!]]></title>
+           <description><![CDATA[]]></description>
+           <link>https://www.skysports.com/cricket/live-blog/12040/13577649/england-vs-pakistan-second-test-day-one-live-latest-cricket-score-updates-videos-and-analysis-from-lords-as-joe-roots-side-target-series-win</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>Liveblog</category>
+           <enclosure type="image/jpg" url="https://e2.365dm.com/26/08/1920x1080/skysports-lords-cricket_7332489.jpg?20260827101519" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Liverpool agree £120m deal in principle for Barcola]]></title>
+           <description><![CDATA[Liverpool have an agreement in principle with Paris Saint-Germain to sign Bradley Barcola for a package worth&#160;&#163;120m.&#160;]]></description>
+           <link>https://www.skysports.com/football/news/12040/13577569/bradley-barcola-transfer-news-liverpool-reach-120m-deal-in-principle-for-psg-forward</link>
+           <pubDate>Thu, 27 Aug 2026 08:55:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-bradley-barcola-psg_7316231.jpg?20260807175615" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Meet the Bundesliga overachievers led by an ex-Chelsea analyst]]></title>
+           <description><![CDATA["For sure," Benjamin Weber jokes when asked about Chelsea winning the Champions League in 2021. "I told Mason to turn and to play the pass." He is talking about Mason Mount&#8217;s ball for Kai Havertz to score the only goal of the final against Manchester City.]]></description>
+           <link>https://www.skysports.com/football/news/12040/13568013/benjamin-weber-interview-augsburg-sporting-director-is-a-former-chelsea-analyst-overachieving-in-the-bundesliga</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/06/1920x1080/skysports-benjamin-weber-fc-augsburg_7285883.jpg?20260629164913" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Chelsea make huge profit on Delap as striker joins Forest]]></title>
+           <description><![CDATA[Nottingham Forest have signed striker Liam Delap in a club-record deal from Chelsea. ]]></description>
+           <link>https://www.skysports.com/football/news/12040/13577306/liam-delap-joins-nottingham-forest-in-club-record-50m-deal-as-chelsea-make-profit-on-striker</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e1.365dm.com/26/08/1920x1080/skysports-liam-delap-chelsea_7332313.jpg?20260827071721" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Barcola's rise explained but is he actually right for Liverpool?]]></title>
+           <description><![CDATA[Bradley Barcola could be the most expensive transfer of this summer window but why is he so prized? He has achieved plenty already. But there is more to come.]]></description>
+           <link>https://www.skysports.com/football/news/12040/13565590/bradley-barcola-to-liverpool-or-arsenal-psg-and-france-forward-is-quick-strong-versatile-intelligent-8211-and-in-demand</link>
+           <pubDate>Thu, 27 Aug 2026 09:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/07/1920x1080/skysports-bradley-barcola-france_7304004.jpg?20260722101347" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Are Mercedes in title trouble after ‘front-loading’ upgrades? ]]></title>
+           <description><![CDATA[Mercedes could be left "hanging on" to win this year's titles after appearing to have front-loaded the development of their 2026 car, according to <em>Sky Sports F1's</em> Bernie Collins.]]></description>
+           <link>https://www.skysports.com/f1/news/12040/13577386/toto-wolffs-claims-that-mercedes-cant-afford-to-match-rivals-2026-upgrades-assessed-by-bernie-collins-on-the-f1-show-podcast</link>
+           <pubDate>Thu, 27 Aug 2026 07:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e2.365dm.com/26/08/1920x1080/skysports-kimi-antonelli-george_7331888.jpg?20260826144818" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Enoch makes his return at Lingfield Park]]></title>
+           <description><![CDATA[We have a busy day&#8217;s racing on Thursday with action from Ffos Las, Lingfield Park, Newton Abbot and Southwell, live on <em>Sky Sports Racing</em>...]]></description>
+           <link>https://www.skysports.com/racing/news/12040/13577059/today-on-sky-sports-racing-ffos-las-lingfield-park-newton-abbot-and-southwell</link>
+           <pubDate>Thu, 27 Aug 2026 07:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e1.365dm.com/25/01/1920x1080/skysports-lingfield-racing_6815544.jpg?20250131144835" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[US Open men's title up for grabs as Sinner injury throws field wide open]]></title>
+           <description><![CDATA[This year's US Open men's singles tournament appears to be up for grabs with Carlos Alcaraz and Novak Djokovic joined by a whole host of players in the mix.]]></description>
+           <link>https://www.skysports.com/tennis/news/12040/13576337/us-open-this-years-mens-tournament-is-up-for-grabs-with-carlos-alcaraz-and-novak-djokovic-leading-way</link>
+           <pubDate>Thu, 27 Aug 2026 07:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e2.365dm.com/26/08/1920x1080/skysports-tennis-us-open-fritz_7329429.jpg?20260823180151" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Czech duo collect $1m after winning US Open mixed doubles championship]]></title>
+           <description><![CDATA[Czech duo Karolina Muchova and Jakub Mensik defeated Belinda Bencic and Flavio Cobolli 6-3 1-6 [10-6] to win the US Open mixed doubles championship and scoop the $1m grand prize on Wednesday night.]]></description>
+           <link>https://www.skysports.com/tennis/news/12040/13577614/us-open-czech-duo-muchova-and-mensik-win-mixed-doubles-championship-and-scoop-cool-1million</link>
+           <pubDate>Thu, 27 Aug 2026 05:30:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-jakub-mensik-karolina-muchova_7332302.jpg?20260827060047" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Allan to Man City: How 'Mini Balotelli' overcame tragedy to thrive]]></title>
+           <description><![CDATA[Manchester City supporters might not know whether to be amused or afraid to hear that Allan Elias&#8217; nickname as a kid was 'Mini Balotelli' &#8211; a reference to the bleached-blonde mohawk haircut that had in fact been inspired by childhood hero Neymar.]]></description>
+           <link>https://www.skysports.com/football/news/12040/13577650/allan-elias-to-man-city-how-brazilian-overcame-tragedy-to-go-from-mini-balotelli-to-palmeiras-underrated-gem</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-allan-elias-palmeiras_7332099.jpg?20260826183231" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Savio steals show on debut as Spurs thrash Charlton]]></title>
+           <description><![CDATA[Savio grabbed a goal and assist on a dream debut as Tottenham thrashed Charlton to progress into the third round of the Carabao Cup.]]></description>
+           <link>https://www.skysports.com/football/tottenham-hotspur-vs-charlton-athletic/report/577440</link>
+           <pubDate>Wed, 26 Aug 2026 22:00:00 BST</pubDate>
+           <category>Report</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-savio-spurs_7332222.jpg?20260826215525" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Bradford beat Burnley on pens to reach third round]]></title>
+           <description><![CDATA[Bradford extended Burnley's uncomfortable start to the season with a 4-2 penalty shoot-out win after their second-round Carabao Cup tie had finished goalless at Valley Parade.]]></description>
+           <link>https://www.skysports.com/football/bradford-city-vs-burnley/report/577424</link>
+           <pubDate>Wed, 26 Aug 2026 21:35:00 BST</pubDate>
+           <category>Report</category>
+           <enclosure type="image/jpg" url="https://e2.365dm.com/26/08/1920x1080/skysports-burnley-fc_7332240.jpg?20260826220959" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Barry hat-trick helps Everton saunter past Preston]]></title>
+           <description><![CDATA[Thierno Barry scored three goals and set up the other as Everton sauntered into the third round of the Carabao Cup by way of a 4-0 win over Preston at Deepdale.]]></description>
+           <link>https://www.skysports.com/football/preston-north-end-vs-everton/report/577434</link>
+           <pubDate>Wed, 26 Aug 2026 21:51:00 BST</pubDate>
+           <category>Report</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-thierno-barry-everton_7332220.jpg?20260826214632" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Focus clear as Arsenal look to 'right the wrongs' of past WSL title challenges]]></title>
+           <description><![CDATA[The focus is crystal clear at Arsenal this season.]]></description>
+           <link>https://www.skysports.com/football/news/12040/13572461/lotte-wubben-moy-and-mariona-caldentey-exclusive-focus-clear-as-arsenal-look-to-right-the-wrongs-of-failed-wsl-title-challenges</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e1.365dm.com/26/08/1920x1080/skysports-wsl-womens-super-league_7319387.jpg?20260812070841" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Palmer 'back to his best' with Alonso's freedom]]></title>
+           <description><![CDATA[Cole Palmer says this is the best he has felt "in ages" after starting the season strongly under Xabi Alonso at Chelsea - and he is putting the tricky previous campaign behind him.]]></description>
+           <link>https://www.skysports.com/football/news/12040/13577403/cole-palmer-chelsea-attacker-ready-to-put-troublesome-2025-26-season-behind-him-after-promising-start-under-xabi-alonso</link>
+           <pubDate>Thu, 27 Aug 2026 10:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e2.365dm.com/26/08/1920x1080/skysports-cole-palmer-morgan_7332044.jpg?20260826172824" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Barnes double fires Newcastle past West Brom]]></title>
+           <description><![CDATA[Harvey Barnes struck twice for Newcastle as they survived a scare against West Brom to win 3-2 and reach the third round of the Carabao Cup.]]></description>
+           <link>https://www.skysports.com/football/newcastle-united-vs-west-bromwich-albion/report/577432</link>
+           <pubDate>Wed, 26 Aug 2026 21:35:00 BST</pubDate>
+           <category>Report</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-harvey-barnes-newcastle_7332201.jpg?20260826212936" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Police investigating alleged assault in connection with Carse nightclub incident]]></title>
+           <description><![CDATA[Derbyshire Police are looking into "allegations of assault" following the incident that saw England bowler Brydon Carse handcuffed outside a nightspot over the weekend.]]></description>
+           <link>https://www.skysports.com/cricket/news/12040/13577567/brydon-carse-police-investigating-alleged-assault-in-connection-with-nightclub-incident-involving-england-bowler</link>
+           <pubDate>Wed, 26 Aug 2026 21:07:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-brydon-carse-england_7332193.jpg?20260826212052" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA['All-time great status awaits Mayer vs Cameron winner']]></title>
+           <description><![CDATA[The winner of Mikaela Mayer and Chantelle Cameron's world title unification fight will cement their position as one of the top five female fighters in boxing history, according to Nakisa Bidarian.]]></description>
+           <link>https://www.skysports.com/boxing/news/12040/13576693/mayer-vs-cameron-winner-cements-status-in-top-five-womens-boxers-of-all-time-says-nakisa-bidarian</link>
+           <pubDate>Thu, 27 Aug 2026 06:00:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/04/1920x1080/skysports-chantelle-cameron_7211846.jpg?20260405205104" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Liverpool to face Spurs in Carabao Cup third round draw LIVE!]]></title>
+           <description><![CDATA[]]></description>
+           <link>https://www.skysports.com/football/preston-north-end-vs-everton/live/577434</link>
+           <pubDate>Wed, 26 Aug 2026 18:30:00 BST</pubDate>
+           <category>Liveblog</category>
+           <enclosure type="image/jpg" url="https://e1.365dm.com/26/08/1920x1080/skysports-thierno-barry-everton_7332196.jpg?20260826212357" length="123456" />
+      </item>
+      	<item>
+           <title><![CDATA[Scorecard: England vs Pakistan, second Test, Lord's]]></title>
+           <description><![CDATA[]]></description>
+           <link>https://www.skysports.com/cricket/england-v-pakistan/scorecard/1063b9b8-e3e5-5f0a-8be8-66743bae740b</link>
+           <pubDate>Thu, 27 Aug 2026 10:50:00 BST</pubDate>
+           <category>News Story</category>
+           <enclosure type="image/jpg" url="https://e0.365dm.com/26/08/1920x1080/skysports-cricket-england-pakistan_7327013.jpg?20260821081310" length="123456" />
+      </item>
+            </channel>
+      </rss>
+ 

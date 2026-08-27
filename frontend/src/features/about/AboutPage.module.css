@@ -1,0 +1,17 @@
+.page {
+  position: relative;
+  overflow: hidden;
+}
+/* soft ambient glow behind the top of the page */
+.page::before {
+  content: '';
+  position: absolute;
+  top: -260px;
+  left: 50%;
+  width: 900px;
+  height: 600px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}

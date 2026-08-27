@@ -1,0 +1,50 @@
+# SportsLive — full stack. Only the frontend port is published; the API and MongoDB
+# stay on the private compose network (nginx proxies /api to the backend).
+#
+#   cp .env.docker.example .env   # fill in RAPIDAPI_KEY + JWT_SECRET
+#   docker compose up -d --build
+#   open http://localhost:${FRONTEND_PORT:-8080}
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      MONGO_URI: mongodb://mongo:27017/sportslive
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      RAPIDAPI_KEY: ${RAPIDAPI_KEY:?Set RAPIDAPI_KEY in .env}
+      # requests arrive same-origin through nginx, so no cross-origin allow-list is needed
+      CORS_ORIGINS: ""
+    depends_on:
+      mongo:
+        condition: service_healthy
+    # no `ports:` — reachable only as http://backend:4000 inside the network
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: /
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  mongo-data:
