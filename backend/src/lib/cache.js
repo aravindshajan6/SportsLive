@@ -74,7 +74,9 @@ class TtlCache {
     const promise = (async () => {
       try {
         const value = await producer();
-        this.set(key, value, ttlMs);
+        // `ttlMs` may be a function of the produced value (e.g. finished matches cache much longer)
+        const ttl = typeof ttlMs === 'function' ? ttlMs(value) : ttlMs;
+        this.set(key, value, ttl);
         return value;
       } catch (err) {
         const stale = this.store.get(key);
@@ -94,13 +96,24 @@ class TtlCache {
   }
 }
 
+const MIN = 60 * 1000;
+const HOUR = 60 * MIN;
+// The RapidAPI free plan allows only ~500 upstream requests/month, so anything that cannot
+// change any more (finished matches, past days) is cached for a long time.
 const TTL = Object.freeze({
-  LIVE: 30 * 1000,
-  FIXTURES: 120 * 1000,
-  SCOREBOARD: 30 * 1000,
-  DETAIL: 60 * 1000, // lineups / statistics / incidents
-  H2H: 60 * 60 * 1000,
-  NEWS: 10 * 60 * 1000,
+  LIVE: 1 * MIN,
+  FIXTURES_TODAY: 5 * MIN,
+  FIXTURES_PAST: 24 * HOUR,
+  FIXTURES_FUTURE: 6 * HOUR,
+  MATCH_LIVE: 1 * MIN, // scoreboard / lineups / statistics / incidents while in play
+  MATCH_UPCOMING: 10 * MIN,
+  MATCH_FINISHED: 24 * HOUR,
+  H2H: 24 * HOUR,
+  NEWS: 10 * MIN,
+  // legacy aliases
+  FIXTURES: 5 * MIN,
+  SCOREBOARD: 1 * MIN,
+  DETAIL: 1 * MIN,
 });
 
 module.exports = { TtlCache, TTL, cache: new TtlCache() };

@@ -31,6 +31,30 @@ function cachedUpstream(pathname, params, ttl, transform) {
   );
 }
 
+/** TTL for a day's fixture list: past days never change, today changes often. */
+function fixturesTtl(date) {
+  const today = todayUtc();
+  if (date < today) return TTL.FIXTURES_PAST;
+  if (date > today) return TTL.FIXTURES_FUTURE;
+  return TTL.FIXTURES_TODAY;
+}
+
+/** TTL for match-detail data based on the match phase. */
+function ttlForPhase(phase) {
+  if (phase === 'finished' || phase === 'postponed' || phase === 'abandoned' || phase === 'cancelled') return TTL.MATCH_FINISHED;
+  if (phase === 'upcoming') return TTL.MATCH_UPCOMING;
+  return TTL.MATCH_LIVE;
+}
+
+/**
+ * Lineups/statistics/incidents don't carry a status, so reuse the phase from the (already
+ * cached) scoreboard of the same match; fall back to the short TTL when it is unknown.
+ */
+function detailTtl(id) {
+  const scoreboard = cache.get(livescoreUrl('/v1/events/scoreboard', { ...COMMON, event_id: id }));
+  return scoreboard ? ttlForPhase(scoreboard.phase) : TTL.MATCH_LIVE;
+}
+
 function withMeta(date) {
   return (json) => ({ date, ...normalize.normalizeList(json), fetchedAt: new Date().toISOString() });
 }
@@ -40,23 +64,23 @@ function getLive() {
 }
 
 function getByDate(date = todayUtc()) {
-  return cachedUpstream('/v1/events/list', { ...COMMON, date, timezone: 0 }, TTL.FIXTURES, withMeta(date));
+  return cachedUpstream('/v1/events/list', { ...COMMON, date, timezone: 0 }, fixturesTtl(date), withMeta(date));
 }
 
 function getScoreboard(id) {
-  return cachedUpstream('/v1/events/scoreboard', { ...COMMON, event_id: id }, TTL.SCOREBOARD, normalize.normalizeScoreboard);
+  return cachedUpstream('/v1/events/scoreboard', { ...COMMON, event_id: id }, (m) => ttlForPhase(m && m.phase), normalize.normalizeScoreboard);
 }
 
 function getLineups(id) {
-  return cachedUpstream('/v1/events/lineups', { ...COMMON, event_id: id }, TTL.DETAIL, normalize.normalizeLineups);
+  return cachedUpstream('/v1/events/lineups', { ...COMMON, event_id: id }, () => detailTtl(id), normalize.normalizeLineups);
 }
 
 function getStatistics(id) {
-  return cachedUpstream('/v1/events/statistics', { ...COMMON, event_id: id }, TTL.DETAIL, normalize.normalizeStatistics);
+  return cachedUpstream('/v1/events/statistics', { ...COMMON, event_id: id }, () => detailTtl(id), normalize.normalizeStatistics);
 }
 
 function getIncidents(id) {
-  return cachedUpstream('/v1/events/incidents', { ...COMMON, event_id: id }, TTL.DETAIL, normalize.normalizeIncidents);
+  return cachedUpstream('/v1/events/incidents', { ...COMMON, event_id: id }, () => detailTtl(id), normalize.normalizeIncidents);
 }
 
 function getH2H(id) {

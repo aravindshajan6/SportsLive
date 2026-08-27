@@ -27,8 +27,27 @@ async function fetchWithTimeout(url, { headers = {}, timeoutMs = env.UPSTREAM_TI
   }
 }
 
-async function fetchJson(url, options) {
+/** Last-seen RapidAPI quota (from the x-ratelimit-* response headers). */
+const quota = { limit: null, remaining: null, resetAt: null, updatedAt: null };
+const QUOTA_WARN_BELOW = 50;
+
+function trackQuota(res) {
+  const limit = Number(res.headers.get('x-ratelimit-requests-limit'));
+  const remaining = Number(res.headers.get('x-ratelimit-requests-remaining'));
+  const resetIn = Number(res.headers.get('x-ratelimit-requests-reset'));
+  if (!Number.isFinite(limit) || !Number.isFinite(remaining)) return;
+  quota.limit = limit;
+  quota.remaining = remaining;
+  quota.resetAt = Number.isFinite(resetIn) ? new Date(Date.now() + resetIn * 1000).toISOString() : null;
+  quota.updatedAt = new Date().toISOString();
+  if (remaining <= QUOTA_WARN_BELOW) {
+    logger.warn(`RapidAPI quota low: ${remaining}/${limit} requests left (resets ${quota.resetAt})`);
+  }
+}
+
+async function fetchJson(url, options = {}) {
   const res = await fetchWithTimeout(url, options);
+  if (options.onResponse) options.onResponse(res);
   if (!res.ok) {
     logger.warn(`Upstream ${res.status} for ${url}`);
     throw new UpstreamError('Upstream error', { status: res.status, url });
@@ -60,7 +79,8 @@ async function livescoreGet(url) {
       'X-RapidAPI-Host': env.RAPIDAPI_HOST,
       Accept: 'application/json',
     },
+    onResponse: trackQuota,
   });
 }
 
-module.exports = { UpstreamError, fetchWithTimeout, fetchJson, livescoreUrl, livescoreGet };
+module.exports = { UpstreamError, fetchWithTimeout, fetchJson, livescoreUrl, livescoreGet, quota };
