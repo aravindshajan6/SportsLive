@@ -1,0 +1,106 @@
+# Sportscast — production stack for the sapper VPS.
+# Lives at /opt/sportscast/compose.prod.yml with .env BESIDE it (compose reads
+# ${VAR} from the compose file's own directory, never from env_file:).
+#
+#   docker compose -f compose.prod.yml up -d
+#
+# No `ports:` anywhere. Traefik reaches the web container privately over the
+# shared `coolify` network, so nothing here is ever directly internet-facing.
+name: sportscast
+
+networks:
+  coolify:
+    external: true          # Coolify's Traefik network — we join it, never modify it
+  edge:
+    driver: bridge          # web <-> api
+  data:
+    driver: bridge          # api <-> mongo, and nothing else
+
+volumes:
+  mongo-data:
+
+services:
+  # ---------------------------------------------------------------- web ----
+  # nginx: serves the built SPA and proxies /api to the api container.
+  # This is the ONLY service Traefik can see.
+  web:
+    image: ${WEB_IMAGE:-ghcr.io/aravindshajan6/sportscast-web:latest}
+    container_name: sportscast-web
+    restart: unless-stopped
+    networks: [coolify, edge]
+    depends_on:
+      api:
+        condition: service_healthy
+    mem_limit: 96m
+    memswap_limit: 96m
+    cpus: 0.5
+    labels:
+      # Traefik runs with exposedbydefault=false, so without this line the
+      # container gets no routing at all.
+      - traefik.enable=true
+      # The container is on two networks; tell Traefik which one to dial.
+      - traefik.docker.network=coolify
+      # --- HTTPS router: the one that actually serves traffic ---
+      - traefik.http.routers.sportscast.rule=Host(`sportscast.sapper.top`)
+      - traefik.http.routers.sportscast.entrypoints=https
+      - traefik.http.routers.sportscast.tls=true
+      - traefik.http.routers.sportscast.tls.certresolver=letsencrypt
+      # nginx listens on 8080 (unprivileged), not 80. Traefik must be told.
+      - traefik.http.services.sportscast.loadbalancer.server.port=8080
+      # --- HTTP router: redirects to HTTPS, and must NOT be deleted ---
+      # Let's Encrypt answers the HTTP-01 challenge on port 80; removing this
+      # router breaks certificate issuance and renewal.
+      - traefik.http.routers.sportscast-http.rule=Host(`sportscast.sapper.top`)
+      - traefik.http.routers.sportscast-http.entrypoints=http
+      - traefik.http.routers.sportscast-http.middlewares=sportscast-https
+      - traefik.http.middlewares.sportscast-https.redirectscheme.scheme=https
+
+  # ---------------------------------------------------------------- api ----
+  api:
+    image: ${API_IMAGE:-ghcr.io/aravindshajan6/sportscast-api:latest}
+    container_name: sportscast-api      # nginx.conf proxies to THIS name
+    restart: unless-stopped
+    networks: [edge, data]              # deliberately NOT on coolify
+    env_file: [.env]                    # JWT_SECRET, RAPIDAPI_KEY
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      # Container name, not the service name `mongo`: on a shared network a
+      # generic name can resolve to a neighbouring app's database.
+      MONGO_URI: mongodb://sportscast-mongo:27017/sportscast
+      # Same-origin through nginx, so no cross-origin allow-list is needed.
+      CORS_ORIGINS: ""
+      # Traefik -> nginx -> here. Trusting only 1 hop would key every visitor
+      # to nginx's IP and make the rate limiters global instead of per-client.
+      TRUST_PROXY: "2"
+      # Node sizes its heap from HOST memory and would grow past mem_limit until
+      # the kernel kills it. ~75% of 384m.
+      NODE_OPTIONS: --max-old-space-size=288
+    depends_on:
+      mongo:
+        condition: service_healthy
+    mem_limit: 384m
+    memswap_limit: 384m
+    cpus: 1.0
+
+  # -------------------------------------------------------------- mongo ----
+  mongo:
+    image: mongo:7
+    container_name: sportscast-mongo
+    restart: unless-stopped
+    networks: [data]                    # unreachable from web and from coolify
+    # WiredTiger defaults to max(256MB, 50% of HOST RAM - 1GB) -> ~1GB on a 4GB
+    # box, ignoring mem_limit entirely, and the kernel kills the container rather
+    # than Mongo trimming. Same class of bug as an unpinned Node heap.
+    command: ["mongod", "--wiredTigerCacheSizeGB", "0.25", "--bind_ip_all"]
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    mem_limit: 512m
+    memswap_limit: 512m
+    cpus: 1.0

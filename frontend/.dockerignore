@@ -1,5 +1,9 @@
 node_modules
 dist
-.env.development
-.env.production
+.env
+.env.*
 npm-debug.log*
+Dockerfile
+.dockerignore
+eslint.config.js
+*.md

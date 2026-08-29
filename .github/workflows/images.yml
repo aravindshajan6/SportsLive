@@ -1,0 +1,69 @@
+# Builds the two Sportscast images and pushes them to GHCR.
+#
+# The VPS only ever PULLS. A build peaks around 400 MB RSS, and mem_limit cannot
+# constrain a build, so running one on the 4 GB box risks starving valodex.
+name: images
+
+on:
+  push:
+    branches: [sportscast]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - '.github/workflows/images.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: images-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write          # required to push to ghcr.io
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: api
+            context: ./backend
+          - name: web
+            context: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}   # automatic, no PAT needed here
+
+      - name: Tags
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/sportscast-${{ matrix.name }}
+          tags: |
+            type=raw,value=latest
+            type=sha,prefix=sha-,format=short
+          # ^ the sha- tag is what makes rollback a specific, nameable build
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.context }}
+          push: true
+          platforms: linux/amd64          # the VPS is x86_64 Ubuntu
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # "/" = same origin. Vite inlines this at build time; setting it only at
+          # runtime would bake localhost into the bundle. It is a path, not a secret,
+          # so the build needs no secrets at all.
+          build-args: VITE_API_URL=/
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}
