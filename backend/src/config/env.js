@@ -35,6 +35,18 @@ function parseList(value) {
     .filter(Boolean);
 }
 
+/**
+ * How many reverse-proxy hops to trust when resolving req.ip (rate-limit keying).
+ * Render puts exactly one proxy in front: 1. The VPS is Traefik -> nginx -> here: 2.
+ * Getting this too low collapses every visitor onto a single rate-limit bucket.
+ */
+function parseTrustProxy(value) {
+  if (value === undefined || value === '') return isProd ? 1 : false;
+  const n = Number(value);
+  if (Number.isFinite(n) && n >= 0) return n;
+  return value; // also allows 'loopback', a CIDR, or a comma list
+}
+
 // Backwards compatibility: the Render deployment still defines the legacy names.
 const MONGO_URI = process.env.MONGO_URI || process.env.mongoAtlasURI || '';
 let JWT_SECRET = process.env.JWT_SECRET || process.env.SECRET_KEY || '';
@@ -59,6 +71,7 @@ module.exports = Object.freeze({
   isProd,
   isTest,
   PORT: Number(process.env.PORT) || 4000,
+  TRUST_PROXY: parseTrustProxy(process.env.TRUST_PROXY),
   MONGO_URI,
   JWT_SECRET,
   RAPIDAPI_KEY: process.env.RAPIDAPI_KEY || '',

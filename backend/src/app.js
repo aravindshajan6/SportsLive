@@ -11,8 +11,11 @@ const { notFound, errorHandler } = require('./middleware/errors');
 
 const app = express();
 
-// Render/Netlify sit behind one proxy; needed for correct client IPs in rate limiting.
-app.set('trust proxy', env.isProd ? 1 : false);
+// Needed for correct client IPs in rate limiting. The hop count differs per
+// deployment (Render = 1, VPS = Traefik -> nginx = 2), so it is configurable:
+// trusting too few hops keys every visitor to the proxy's IP and makes the
+// limiters global instead of per-client.
+app.set('trust proxy', env.TRUST_PROXY);
 app.disable('x-powered-by');
 
 app.use(helmet());
