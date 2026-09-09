@@ -67,3 +67,16 @@ jobs:
           build-args: VITE_API_URL=/
           cache-from: type=gha,scope=${{ matrix.name }}
           cache-to: type=gha,mode=max,scope=${{ matrix.name }}
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/sportscast'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy on sapper
+        run: |
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > deploy_key
+          chmod 600 deploy_key
+          ssh -i deploy_key -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" "sportscast"
+          rm -f deploy_key
