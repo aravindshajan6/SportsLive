@@ -68,15 +68,15 @@ jobs:
           cache-from: type=gha,scope=${{ matrix.name }}
           cache-to: type=gha,mode=max,scope=${{ matrix.name }}
 
-  deploy:
+  notify:
     needs: build
     if: github.ref == 'refs/heads/sportscast'
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy on sapper
+      - name: Ask to deploy (Telegram)
         run: |
-          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > deploy_key
-          chmod 600 deploy_key
-          ssh -i deploy_key -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes \
-            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" "sportscast"
-          rm -f deploy_key
+          SHA="sha-$(echo ${{ github.sha }} | cut -c1-7)"
+          curl -s "https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/sendMessage" \
+            --data-urlencode "chat_id=${{ secrets.TG_CHAT }}" \
+            --data-urlencode "text=🚀 sportscast ${SHA} built - deploy to production?" \
+            --data-urlencode "reply_markup={\"inline_keyboard\":[[{\"text\":\"✅ Deploy\",\"callback_data\":\"dep:sportscast:${SHA}\"},{\"text\":\"✖ Skip\",\"callback_data\":\"cn\"}]]}" >/dev/null
